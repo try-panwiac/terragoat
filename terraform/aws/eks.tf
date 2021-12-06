@@ -16,7 +16,7 @@ data aws_iam_policy_document "iam_policy_eks" {
 }
 
 resource aws_iam_role "iam_for_eks" {
-  name               = "${local.resource_prefix.value}-iam-for-eks"
+  name               = "${local.resource_prefix.value}-iam-for-eks" 
   assume_role_policy = data.aws_iam_policy_document.iam_policy_eks.json
   tags = {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
@@ -31,7 +31,7 @@ resource aws_iam_role "iam_for_eks" {
 }
 
 resource aws_iam_role_policy_attachment "policy_attachment-AmazonEKSClusterPolicy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy" 
   role       = aws_iam_role.iam_for_eks.name
 }
 
@@ -41,7 +41,7 @@ resource aws_iam_role_policy_attachment "policy_attachment-AmazonEKSServicePolic
 }
 
 resource aws_vpc "eks_vpc" {
-  cidr_block           = "10.10.0.0/16"
+  cidr_block           = "10.10.0.0/16" 
   enable_dns_hostnames = true
   enable_dns_support   = true
   tags = merge({
@@ -59,7 +59,7 @@ resource aws_vpc "eks_vpc" {
 }
 
 resource aws_subnet "eks_subnet1" {
-  vpc_id                  = aws_vpc.eks_vpc.id
+  vpc_id                  = aws_vpc.eks_vpc.id 
   cidr_block              = "10.10.10.0/24"
   availability_zone       = "${var.region}a"
   map_public_ip_on_launch = true
