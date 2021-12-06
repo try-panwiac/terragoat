@@ -7,7 +7,7 @@ jobs:
     executor: pcs/compute
     steps:
       - checkout
-      - run: 'docker pull nginx'
+      - run: 'docker pull nginx:1.17.9-alpine'
       - pcs/scan_image:
           prisma_cloud_compute_url: $prisma_cloud_compute_url
           prisma_cloud_compute_username: $prisma_cloud_access_key
