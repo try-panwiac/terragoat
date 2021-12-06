@@ -12,7 +12,7 @@ jobs:
           prisma_cloud_compute_url: $prisma_cloud_compute_url
           prisma_cloud_compute_username: $prisma_cloud_access_key
           prisma_cloud_compute_password: prisma_cloud_secret_key
-          prisma_cloud_scan_image: nginx
+          prisma_cloud_scan_image: nginx:1.17.9-alpine
           reports: csv,junit
   iac_scan:
     executor: bridgecrew/default
