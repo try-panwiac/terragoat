@@ -31,7 +31,7 @@ EOF
   })
 }
 
-resource "aws_ebs_volume" "web_host_storage" {
+resource "aws_ebs_volume" "web_host_storage" { 
   # unencrypted volume
   availability_zone = "${var.region}a"
   #encrypted         = false  # Setting this causes the volume to be recreated on apply 
@@ -50,7 +50,7 @@ resource "aws_ebs_volume" "web_host_storage" {
   })
 }
 
-resource "aws_ebs_snapshot" "example_snapshot" {
+resource "aws_ebs_snapshot" "example_snapshot" {  
   # ebs snapshot without encryption
   volume_id   = "${aws_ebs_volume.web_host_storage.id}"
   description = "${local.resource_prefix.value}-ebs-snapshot"
@@ -114,7 +114,7 @@ resource "aws_security_group" "web-node" {
   }
 }
 
-resource "aws_vpc" "web_vpc" {
+resource "aws_vpc" "web_vpc" { 
   cidr_block           = "172.16.0.0/16"
   enable_dns_hostnames = true
   enable_dns_support   = true
