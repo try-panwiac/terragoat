@@ -1,6 +1,6 @@
 resource "aws_instance" "web_host" {
   # ec2 have plain text secrets in user data
-  ami           = "${var.ami}"
+  ami           = "${var.ami}" 
   instance_type = "t2.nano"
 
   vpc_security_group_ids = [
@@ -33,7 +33,7 @@ EOF
 
 resource "aws_ebs_volume" "web_host_storage" {
   # unencrypted volume
-  availability_zone = "${var.region}a"
+  availability_zone = "${var.region}a" 
   #encrypted         = false  # Setting this causes the volume to be recreated on apply 
   size = 1
   tags = merge({
@@ -52,7 +52,7 @@ resource "aws_ebs_volume" "web_host_storage" {
 
 resource "aws_ebs_snapshot" "example_snapshot" {
   # ebs snapshot without encryption
-  volume_id   = "${aws_ebs_volume.web_host_storage.id}"
+  volume_id   = "${aws_ebs_volume.web_host_storage.id}" 
   description = "${local.resource_prefix.value}-ebs-snapshot"
   tags = merge({
     Name = "${local.resource_prefix.value}-ebs-snapshot"
@@ -60,7 +60,7 @@ resource "aws_ebs_snapshot" "example_snapshot" {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
     git_file             = "terraform/aws/ec2.tf"
     git_last_modified_at = "2020-06-16 14:46:24"
-    git_last_modified_by = "nimrodkor@gmail.com"
+    git_last_modified_by = "nimrodkor@gmail.com" 
     git_modifiers        = "nimrodkor"
     git_org              = "bridgecrewio"
     git_repo             = "terragoat"
@@ -69,7 +69,7 @@ resource "aws_ebs_snapshot" "example_snapshot" {
 }
 
 resource "aws_volume_attachment" "ebs_att" {
-  device_name = "/dev/sdh"
+  device_name = "/dev/sdh" 
   volume_id   = "${aws_ebs_volume.web_host_storage.id}"
   instance_id = "${aws_instance.web_host.id}"
 }
@@ -83,7 +83,7 @@ resource "aws_security_group" "web-node" {
   ingress {
     from_port = 80
     to_port   = 80
-    protocol  = "tcp"
+    protocol  = "tcp" 
     cidr_blocks = [
     "0.0.0.0/0"]
   }
