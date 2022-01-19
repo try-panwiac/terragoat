@@ -2,10 +2,6 @@ provider "azurerm" {
   features {}
 }
 
-provider "azurerm" {
-  features {}
-}
-
 resource "azurerm_resource_group" "trekgroup" {
   name     = "trekgroup-resources"
   location = "West US"
