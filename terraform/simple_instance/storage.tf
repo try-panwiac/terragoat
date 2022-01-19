@@ -2,9 +2,9 @@ provider "random" {
 }
 
 resource "random_string" "sa_name_affix" {
-  length = 8
+  length  = 8
   special = false
-  upper = false
+  upper   = false
 }
 
 provider "azurerm" {
@@ -33,9 +33,9 @@ resource "azurerm_storage_account" "storagebay" {
   account_tier             = "Standard"
   account_replication_type = "GRS"
   tags = {
-    git_commit           = "a8419034dcda6ce0b338162fbf256d2b2cacb4b5"
+    git_commit           = "d083d00642e1dd91ab7275d1dd6d08feefd09b32"
     git_file             = "terraform/simple_instance/storage.tf"
-    git_last_modified_at = "2022-01-19 06:43:54"
+    git_last_modified_at = "2022-01-19 07:01:31"
     git_last_modified_by = "87036659+taysmith-test@users.noreply.github.com"
     git_modifiers        = "87036659+taysmith-test"
     git_org              = "taysmith-test"
