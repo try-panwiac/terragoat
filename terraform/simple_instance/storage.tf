@@ -49,3 +49,10 @@ resource "azurerm_storage_container" "storagebay10" {
   storage_account_name  = azurerm_storage_account.storagebay.name
   container_access_type = "blob"
 }
+
+resource "azurerm_storage_blob" "trek-blob" {
+  name                   = "my-trek-content"
+  storage_account_name   = azurerm_storage_account.storagebay.name
+  storage_container_name = azurerm_storage_container.storagebay10.name
+  type                   = "Block"
+}
