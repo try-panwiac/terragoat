@@ -43,3 +43,9 @@ resource "azurerm_storage_account" "storagebay" {
     yor_trace            = "faaf4f2b-e42a-4237-bf6d-ee1b6d5b66fe"
   }
 }
+
+resource "azurerm_storage_container" "storagebay10" {
+  name                  = "storagebay10${random_string.sa_name_affix.result}"
+  storage_account_name  = azurerm_storage_account.storagebay.name
+  container_access_type = "blob"
+}
