@@ -45,8 +45,8 @@ resource "azurerm_storage_account" "storagebay" {
 }
 
 resource "azurerm_storage_container" "storagebay10" {
-  name                  = "storagebay10${random_string.sa_name_affix.result}"
-  storage_account_name  = azurerm_storage_account.storagebay.name
+  name                 = "storagebay10${random_string.sa_name_affix.result}"
+  storage_account_name = azurerm_storage_account.storagebay.name
 }
 
 resource "azurerm_storage_blob" "trek-blob" {
