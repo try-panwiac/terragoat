@@ -13,6 +13,16 @@ variable "prefix" {
 resource "azurerm_resource_group" "main" {
   name     = "${var.prefix}-resources"
   location = "West Europe"
+  tags = {
+    git_commit           = "b8ccfb742ecd03d8afa1b053d4b152f3479f9dbf"
+    git_file             = "terraform/simple_instance/vm.tf"
+    git_last_modified_at = "2022-01-22 00:32:53"
+    git_last_modified_by = "87036659+taysmith-test@users.noreply.github.com"
+    git_modifiers        = "87036659+taysmith-test"
+    git_org              = "taysmith-test"
+    git_repo             = "terragoat"
+    yor_trace            = "9b614884-19bb-494c-8a09-2d2c293360c0"
+  }
 }
 
 resource "azurerm_virtual_network" "main" {
@@ -20,6 +30,16 @@ resource "azurerm_virtual_network" "main" {
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
+  tags = {
+    git_commit           = "b8ccfb742ecd03d8afa1b053d4b152f3479f9dbf"
+    git_file             = "terraform/simple_instance/vm.tf"
+    git_last_modified_at = "2022-01-22 00:32:53"
+    git_last_modified_by = "87036659+taysmith-test@users.noreply.github.com"
+    git_modifiers        = "87036659+taysmith-test"
+    git_org              = "taysmith-test"
+    git_repo             = "terragoat"
+    yor_trace            = "8adb3e2f-1b11-4536-9b13-a71a5a009bf1"
+  }
 }
 
 resource "azurerm_subnet" "internal" {
@@ -38,6 +58,16 @@ resource "azurerm_network_interface" "main" {
     name                          = "testconfiguration1"
     subnet_id                     = azurerm_subnet.internal.id
     private_ip_address_allocation = "Dynamic"
+  }
+  tags = {
+    git_commit           = "b8ccfb742ecd03d8afa1b053d4b152f3479f9dbf"
+    git_file             = "terraform/simple_instance/vm.tf"
+    git_last_modified_at = "2022-01-22 00:32:53"
+    git_last_modified_by = "87036659+taysmith-test@users.noreply.github.com"
+    git_modifiers        = "87036659+taysmith-test"
+    git_org              = "taysmith-test"
+    git_repo             = "terragoat"
+    yor_trace            = "05773581-192c-4e80-8947-6767c4540260"
   }
 }
 
@@ -73,6 +103,14 @@ resource "azurerm_virtual_machine" "main" {
     disable_password_authentication = false
   }
   tags = {
-    environment = "staging"
+    environment          = "staging"
+    git_commit           = "b8ccfb742ecd03d8afa1b053d4b152f3479f9dbf"
+    git_file             = "terraform/simple_instance/vm.tf"
+    git_last_modified_at = "2022-01-22 00:32:53"
+    git_last_modified_by = "87036659+taysmith-test@users.noreply.github.com"
+    git_modifiers        = "87036659+taysmith-test"
+    git_org              = "taysmith-test"
+    git_repo             = "terragoat"
+    yor_trace            = "d8d6a981-2001-45dc-9fa4-d20b01046d9e"
   }
 }
