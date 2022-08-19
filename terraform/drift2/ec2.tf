@@ -19,6 +19,14 @@ resource "aws_instance" "web" {
   instance_type = "t3.micro"
 
   tags = {
-    Name = "Drift Instance"
+    Name                 = "Drift Instance"
+    git_commit           = "04c57364d3b10465d886d072f619d4dd10e1812a"
+    git_file             = "terraform/drift2/ec2.tf"
+    git_last_modified_at = "2022-08-19 05:53:43"
+    git_last_modified_by = "93744932+try-panwiac@users.noreply.github.com"
+    git_modifiers        = "93744932+try-panwiac"
+    git_org              = "try-panwiac"
+    git_repo             = "terragoat"
+    yor_trace            = "1ba9208e-8a3e-4143-8fea-1aa7d4fa67fb"
   }
 }
