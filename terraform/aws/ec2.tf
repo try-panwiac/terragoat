@@ -37,7 +37,7 @@ resource "aws_ebs_volume" "web_host_storage" {
   #encrypted         = false  # Setting this causes the volume to be recreated on apply 
   size = 1
   tags = merge({
-    Name = "${local.resource_prefix.value}-ebs"
+    Name = "${local.resource_prefix.value}-ebs" 
     }, {
     git_commit           = "d3439f0f2af62f6fa3521e14d6c27819ef8f12e1"
     git_file             = "terraform/aws/ec2.tf"
