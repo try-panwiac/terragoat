@@ -33,18 +33,18 @@ EOF
 
 resource "aws_ebs_volume" "web_host_storage" {
   # unencrypted volume
-  
+
   availability_zone = "${var.region}a"
   #encrypted         = false  # Setting this causes the volume to be recreated on apply 
   size = 1
   tags = merge({
     Name = "${local.resource_prefix.value}-ebs"
     }, {
-    git_commit           = "d3439f0f2af62f6fa3521e14d6c27819ef8f12e1"
+    git_commit           = "72cc5ff56c6914ea6420d7221884adba98c17f95"
     git_file             = "terraform/aws/ec2.tf"
-    git_last_modified_at = "2021-05-02 11:17:26"
-    git_last_modified_by = "nimrodkor@users.noreply.github.com"
-    git_modifiers        = "nimrodkor"
+    git_last_modified_at = "2023-05-09 05:35:57"
+    git_last_modified_by = "93744932+try-panwiac@users.noreply.github.com"
+    git_modifiers        = "93744932+try-panwiac/nimrodkor"
     git_org              = "try-panwiac"
     git_repo             = "terragoat"
     yor_trace            = "c5509daf-10f0-46af-9e03-41989212521d"
