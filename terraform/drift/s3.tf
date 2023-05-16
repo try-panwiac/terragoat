@@ -18,3 +18,14 @@ resource "aws_s3_bucket" "docking_bay" {
     yor_trace            = "d23faa0f-b532-4c9b-89fc-40ae91253634"
   }
 }
+
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "docking_bay" {
+  bucket = aws_s3_bucket.docking_bay.bucket
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm     = "aws:kms"
+    }
+  }
+}
