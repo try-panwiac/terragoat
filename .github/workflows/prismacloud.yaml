@@ -1,4 +1,4 @@
-name: Bridgecrew
+name: Prisma Cloud
 on:
   pull_request:
   push:
