@@ -4,10 +4,11 @@ provider "aws" {
 
 resource "aws_s3_bucket" "docking_bay" {
   bucket_prefix = "docking-bay-storage-"
+  
 
   tags = {
     Name                 = "Docking Bay"
-    Environment          = "Dev"
+    Environment          = "Prod"
     git_commit           = "6078188b4f20b97eb7b8b5625c6feba5a9838040"
     git_file             = "terraform/drift/s3.tf"
     git_last_modified_at = "2022-06-07 16:02:00"
