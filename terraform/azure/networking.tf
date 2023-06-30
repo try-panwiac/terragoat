@@ -12,6 +12,7 @@ resource "azurerm_virtual_network" "example" {
     git_org              = "bridgecrewio"
     git_repo             = "terragoat"
     yor_trace            = "eb19f165-9c21-4a7a-96e5-5bb557a38228"
+    user                 = "pchandaliya"
   }
 }
 
@@ -41,6 +42,7 @@ resource "azurerm_network_interface" "ni_linux" {
     git_org              = "bridgecrewio"
     git_repo             = "terragoat"
     yor_trace            = "2647f099-dff8-4514-8cef-96159380c02a"
+    user                 = "pchandaliya"
   }
 }
 
@@ -63,6 +65,7 @@ resource "azurerm_network_interface" "ni_win" {
     git_org              = "bridgecrewio"
     git_repo             = "terragoat"
     yor_trace            = "2b5dbf28-04fb-4151-a637-a731bbe7ed1d"
+    user                 = "pchandaliya"
   }
 }
 
@@ -119,6 +122,7 @@ resource azurerm_network_watcher "network_watcher" {
     git_org              = "bridgecrewio"
     git_repo             = "terragoat"
     yor_trace            = "3da368fc-723f-43d2-8e82-08dcc91e5094"
+    user                 = "pchandaliya"
   }
 }
 
@@ -141,5 +145,6 @@ resource azurerm_network_watcher_flow_log "flow_log" {
     git_org              = "try-panwiac"
     git_repo             = "terragoat"
     yor_trace            = "da55eb66-ee42-439c-9eb8-f09273bd6e1d"
+    user                 = "pchandaliya"
   }
 }

@@ -324,6 +324,9 @@ resource "aws_ec2_capacity_reservation" "open" {
   availability_zone       = "${local.region}a"
   instance_count          = 1
   instance_match_criteria = "open"
+  tags = {
+    user = "pchandaliya"
+  }
 }
 
 resource "aws_ec2_capacity_reservation" "targeted" {
@@ -332,6 +335,9 @@ resource "aws_ec2_capacity_reservation" "targeted" {
   availability_zone       = "${local.region}a"
   instance_count          = 1
   instance_match_criteria = "targeted"
+  tags = {
+    user = "pchandaliya"
+  }
 }
 
 ################################################################################
@@ -349,7 +355,9 @@ module "vpc" {
   private_subnets = [for k, v in local.azs : cidrsubnet(local.vpc_cidr, 4, k)]
   public_subnets  = [for k, v in local.azs : cidrsubnet(local.vpc_cidr, 8, k + 48)]
 
-  tags = local.tags
+  tags = merge(local.tags, {
+    user = "pchandaliya"
+  })
 }
 
 data "aws_ami" "amazon_linux" {
@@ -374,17 +382,28 @@ module "security_group" {
   ingress_rules       = ["http-80-tcp", "all-icmp"]
   egress_rules        = ["all-all"]
 
-  tags = local.tags
+  tags = merge(local.tags, {
+    user = "pchandaliya"
+  })
 }
 
 resource "aws_placement_group" "web" {
   name     = local.name
   strategy = "cluster"
+  tags = {
+    user = "pchandaliya"
+  }
 }
 
 resource "aws_kms_key" "this" {
+  tags = {
+    user = "pchandaliya"
+  }
 }
 
 resource "aws_network_interface" "this" {
   subnet_id = element(module.vpc.private_subnets, 0)
+  tags = {
+    user = "pchandaliya"
+  }
 }

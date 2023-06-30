@@ -25,6 +25,7 @@ EOF
     git_org              = "bridgecrewio"
     git_repo             = "terragoat"
     yor_trace            = "93cfa6f9-a257-40c3-b7dc-3c3686929734"
+    user                 = "pchandaliya"
   }
 }
 
