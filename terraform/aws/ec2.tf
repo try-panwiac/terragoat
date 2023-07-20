@@ -1,5 +1,5 @@
 resource "aws_instance" "web_host" {
-  # ec2 have plain text secrets in user data
+  # ec2 have plain text secrets in user data 
   ami           = "${var.ami}"
   instance_type = "t2.nano"
 
@@ -32,7 +32,7 @@ EOF
 }
 
 resource "aws_ebs_volume" "web_host_storage" {
-  # unencrypted volume
+  # unencrypted volume 
 
   availability_zone = "${var.region}a"
   #encrypted         = false  # Setting this causes the volume to be recreated on apply 
@@ -52,7 +52,7 @@ resource "aws_ebs_volume" "web_host_storage" {
 }
 
 resource "aws_ebs_snapshot" "example_snapshot" {
-  # ebs snapshot without encryption
+  # ebs snapshot without encryption 
   volume_id   = "${aws_ebs_volume.web_host_storage.id}"
   description = "${local.resource_prefix.value}-ebs-snapshot"
   tags = merge({
