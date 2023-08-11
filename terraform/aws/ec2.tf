@@ -115,6 +115,15 @@ resource "aws_security_group" "web-node" {
   }
 }
 
+resource "aws_s3_bucket" "example" {
+  bucket = "my-tf-test-bucket"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
+
 resource "aws_vpc" "web_vpc" {
   cidr_block           = "172.16.0.0/16" 
   enable_dns_hostnames = true
