@@ -26,6 +26,8 @@ resource "aws_instance" "example" {
     http_endpoint = "enabled"
     http_tokens   = "required"
   }
+
+  monitoring = true
 }
 
 resource "aws_launch_template" "example" {
