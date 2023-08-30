@@ -1,7 +1,7 @@
 resource "aws_instance" "web_host" {
   # ec2 have plain text secrets in user data
   ami           = "${var.ami}"
-  instance_type = "t2.nano"
+  instance_type = "t2.micro"
 
   vpc_security_group_ids = [
   "${aws_security_group.web-node.id}"]
@@ -82,8 +82,8 @@ resource "aws_security_group" "web-node" {
   vpc_id      = aws_vpc.web_vpc.id
 
   ingress {
-    from_port = 80
-    to_port   = 80
+    from_port = 8080
+    to_port   = 8080
     protocol  = "tcp"
     cidr_blocks = [
     "0.0.0.0/0"]
