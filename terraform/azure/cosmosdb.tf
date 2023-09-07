@@ -15,7 +15,7 @@ resource "azurerm_cosmosdb_account" "db" {
   offer_type          = "Standard"
   kind                = "MongoDB"
 
-  access_key_metadata_writes_enabled = true
+  access_key_metadata_writes_enabled = false
   
   enable_automatic_failover = true
 
