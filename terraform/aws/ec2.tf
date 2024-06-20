@@ -9,7 +9,7 @@ resource "aws_instance" "web_host" {
   user_data = <<EOF
 #! /bin/bash
 sudo apt-get update
-sudo apt-get install -y apache2
+sudo apt-get install -y apache2 
 sudo systemctl start apache2
 sudo systemctl enable apache2
 export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMAAA
