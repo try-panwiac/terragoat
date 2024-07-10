@@ -1,22 +1,47 @@
-from checkov.common.models.consts import ANY_VALUE
-from checkov.common.models.enums import CheckCategories
-from checkov.terraform.checks.resource.base_resource_value_check import BaseResourceValueCheck
-from typing import Any
+resource "aws_sagemaker_model" "model_pass" {
+  name               = "my-model"
+  execution_role_arn = aws_iam_role.example.arn
 
+  primary_container {
+    image = data.aws_sagemaker_prebuilt_ecr_image.test.registry_path
+  }
+  enable_network_isolation = true
+}
 
-class SagemakerEndpointConfigurationEncryption(BaseResourceValueCheck):
-    def __init__(self):
-        name = "Ensure all data stored in the Sagemaker Endpoint is securely encrypted at rest"
-        id = "CKV_AWS_98"
-        supported_resources = ['aws_sagemaker_endpoint_configuration']
-        categories = [CheckCategories.ENCRYPTION]
-        super().__init__(name=name, id=id, categories=categories, supported_resources=supported_resources)
+resource "aws_sagemaker_model" "model_fail_1" {
+  name               = "my-model"
+  execution_role_arn = aws_iam_role.example.arn
 
-    def get_inspected_key(self) -> str:
-        return 'kms_key_arn'
+  primary_container {
+    image = data.aws_sagemaker_prebuilt_ecr_image.test.registry_path
+  }
+  enable_network_isolation = false
+}
 
-    def get_expected_value(self) -> Any:
-        return ANY_VALUE
+resource "aws_sagemaker_model" "model_fail_2" {
+  name               = "my-model"
+  execution_role_arn = aws_iam_role.example.arn
 
+  primary_container {
+    image = data.aws_sagemaker_prebuilt_ecr_image.test.registry_path
+  }
+}
 
-check = SagemakerEndpointConfigurationEncryption()
+resource "aws_iam_role" "example" {
+  assume_role_policy = data.aws_iam_policy_document.assume_role.json
+}
+
+data "aws_iam_policy_document" "assume_role" {
+  statement {
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["sagemaker.amazonaws.com"]
+    }
+  }
+}
+
+data "aws_sagemaker_prebuilt_ecr_image" "test" {
+  repository_name = "kmeans"
+}
