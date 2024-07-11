@@ -5,7 +5,7 @@ resource "aws_sagemaker_model" "model_pass" {
   primary_container {
     image = data.aws_sagemaker_prebuilt_ecr_image.test.registry_path
   }
-  enable_network_isolation = true
+  enable_network_isolation = false
 }
 
 resource "aws_sagemaker_model" "model_fail_1" {
