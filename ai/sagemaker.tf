@@ -45,3 +45,13 @@ data "aws_iam_policy_document" "assume_role" {
 data "aws_sagemaker_prebuilt_ecr_image" "test" {
   repository_name = "kmeans"
 }
+
+resource "aws_sagemaker_model" "example" {
+  name               = "my-model"
+  execution_role_arn = aws_iam_role.example.arn
+
+  primary_container {
+    image = data.aws_sagemaker_prebuilt_ecr_image.test.registry_path
+  }
+  enable_network_isolation = true
+}
