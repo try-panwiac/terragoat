@@ -5,11 +5,11 @@ resource "aws_sagemaker_model" "model_pass" {
   primary_container {
     image = data.aws_sagemaker_prebuilt_ecr_image.test.registry_path
   }
-  enable_network_isolation = true
+  enable_network_isolation = true 
 }
 
 resource "aws_sagemaker_model" "model_fail_1" {
-  name               = "my-model"
+  name               = "my-model" 
   execution_role_arn = aws_iam_role.example.arn
 
   primary_container {
@@ -19,7 +19,7 @@ resource "aws_sagemaker_model" "model_fail_1" {
 }
 
 resource "aws_sagemaker_model" "model_fail_2" {
-  name               = "my-model"
+  name               = "my-model" 
   execution_role_arn = aws_iam_role.example.arn
 
   primary_container {
