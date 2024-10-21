@@ -1,5 +1,5 @@
 resource "aws_sagemaker_model" "model_pass" {
-  name               = "my-model"
+  name               = "my-model" 
   execution_role_arn = aws_iam_role.example.arn
 
   primary_container {
@@ -9,7 +9,7 @@ resource "aws_sagemaker_model" "model_pass" {
 }
 
 resource "aws_sagemaker_model" "model_fail_1" {
-  name               = "my-model"
+  name               = "my-model" 
   execution_role_arn = aws_iam_role.example.arn
 
   primary_container {
@@ -19,7 +19,7 @@ resource "aws_sagemaker_model" "model_fail_1" {
 }
 
 resource "aws_sagemaker_model" "model_fail_2" {
-  name               = "my-model"
+  name               = "my-model" 
   execution_role_arn = aws_iam_role.example.arn
 
   primary_container {
