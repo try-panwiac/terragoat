@@ -324,6 +324,12 @@ resource "aws_ec2_capacity_reservation" "open" {
   availability_zone       = "${local.region}a"
   instance_count          = 1
   instance_match_criteria = "open"
+  tags = {
+    git_org   = "try-panwiac"
+    git_repo  = "terragoat"
+    team      = "eco"
+    yor_trace = "7eabb268-23a7-4f3e-80cf-352e1a39ea1d"
+  }
 }
 
 resource "aws_ec2_capacity_reservation" "targeted" {
@@ -332,6 +338,12 @@ resource "aws_ec2_capacity_reservation" "targeted" {
   availability_zone       = "${local.region}a"
   instance_count          = 1
   instance_match_criteria = "targeted"
+  tags = {
+    git_org   = "try-panwiac"
+    git_repo  = "terragoat"
+    team      = "eco"
+    yor_trace = "06dd2064-8e24-4229-b544-7fc6bf91fe0e"
+  }
 }
 
 ################################################################################
@@ -349,7 +361,12 @@ module "vpc" {
   private_subnets = [for k, v in local.azs : cidrsubnet(local.vpc_cidr, 4, k)]
   public_subnets  = [for k, v in local.azs : cidrsubnet(local.vpc_cidr, 8, k + 48)]
 
-  tags = local.tags
+  tags = merge(local.tags, {
+    git_org   = "try-panwiac"
+    git_repo  = "terragoat"
+    team      = "eco"
+    yor_trace = "127bd875-abbd-4717-b16d-0a15803c7999"
+  })
 }
 
 data "aws_ami" "amazon_linux" {
@@ -374,17 +391,40 @@ module "security_group" {
   ingress_rules       = ["http-80-tcp", "all-icmp"]
   egress_rules        = ["all-all"]
 
-  tags = local.tags
+  tags = merge(local.tags, {
+    git_org   = "try-panwiac"
+    git_repo  = "terragoat"
+    team      = "eco"
+    yor_trace = "a3e6997b-be2a-489b-81ae-43307c9858a2"
+  })
 }
 
 resource "aws_placement_group" "web" {
   name     = local.name
   strategy = "cluster"
+  tags = {
+    git_org   = "try-panwiac"
+    git_repo  = "terragoat"
+    team      = "eco"
+    yor_trace = "8beefa17-36e1-4fed-91d3-41b889f8781a"
+  }
 }
 
 resource "aws_kms_key" "this" {
+  tags = {
+    git_org   = "try-panwiac"
+    git_repo  = "terragoat"
+    team      = "eco"
+    yor_trace = "b4066a83-44b8-4aef-9ef3-65330cbd253f"
+  }
 }
 
 resource "aws_network_interface" "this" {
   subnet_id = element(module.vpc.private_subnets, 0)
+  tags = {
+    git_org   = "try-panwiac"
+    git_repo  = "terragoat"
+    team      = "eco"
+    yor_trace = "7109391b-7c78-47c9-b85a-8c48e84d28d3"
+  }
 }

@@ -1,6 +1,12 @@
 resource "azurerm_resource_group" "example" {
   name     = "example-resources"
   location = "West Europe"
+  tags = {
+    git_org   = "try-panwiac"
+    git_repo  = "terragoat"
+    team      = "eco"
+    yor_trace = "d2f18667-3052-4845-8723-f7231e023086"
+  }
 }
 
 resource "azurerm_kubernetes_cluster" "example" {
@@ -21,6 +27,10 @@ resource "azurerm_kubernetes_cluster" "example" {
 
   tags = {
     Environment = "Production"
+    git_org     = "try-panwiac"
+    git_repo    = "terragoat"
+    team        = "eco"
+    yor_trace   = "add1678e-eed2-409b-91c1-f8c8e852b904"
   }
 }
 
