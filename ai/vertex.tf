@@ -9,11 +9,13 @@ resource "google_notebooks_instance" "pass1" {
   }
 
   # This configures a private Vertex AI instance
+  # Change
   no_public_ip = true
 }
 
 
 resource "google_notebooks_instance" "fail1" {
+  # Change
   name = "fail1-instance"
   location = "us-west1-a"
   machine_type = "e2-medium"
@@ -29,6 +31,7 @@ resource "google_notebooks_instance" "fail1" {
 # This configures a public Vertex AI instance
 # b/c there is no "no_public_ip" setting configured
 resource "google_notebooks_instance" "fail2" {
+  # Change
   name = "fail2-instance"
   location = "us-west1-a"
   machine_type = "e2-medium"
