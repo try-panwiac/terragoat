@@ -5,4 +5,11 @@ resource "aws_elasticache_cluster" "example" {
   num_cache_nodes      = 2
   parameter_group_name = "default.memcached1.4"
   port                 = 11211
+  tags = {
+    Team      = ""
+    git_org   = "try-panwiac"
+    git_repo  = "terragoat"
+    team      = "eco"
+    yor_trace = "36eaaed8-64ef-4272-8480-9cad09e369b6"
+  }
 }
