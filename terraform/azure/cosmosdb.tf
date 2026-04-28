@@ -1,6 +1,13 @@
 resource "azurerm_resource_group" "example" {
   name     = "example-resource-group"
   location = "West Europe"
+  tags = {
+    Team      = ""
+    git_org   = "try-panwiac"
+    git_repo  = "terragoat"
+    team      = "eco"
+    yor_trace = "4f631ae7-b652-41a9-bcad-10d29185a36c"
+  }
 }
 
 resource "random_integer" "ri" {
@@ -16,7 +23,7 @@ resource "azurerm_cosmosdb_account" "db" {
   kind                = "MongoDB"
 
   access_key_metadata_writes_enabled = true
-  
+
   enable_automatic_failover = true
 
   capabilities {
@@ -49,5 +56,12 @@ resource "azurerm_cosmosdb_account" "db" {
   geo_location {
     location          = "westus"
     failover_priority = 0
+  }
+  tags = {
+    Team      = ""
+    git_org   = "try-panwiac"
+    git_repo  = "terragoat"
+    team      = "eco"
+    yor_trace = "4f6dd0d3-db5d-40ee-b2ca-477d3faa30f9"
   }
 }
